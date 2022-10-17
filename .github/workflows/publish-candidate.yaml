@@ -4,12 +4,16 @@ on:
   push:
     tags:
       - "*"
+  workflow_run:
+    workflows: ["Integration Tests"]
+    branches: [master]
+    types: 
+      - completed
 
 jobs:
   build-charms:
     name: "Build the charms"
-    runs-on: "ubuntu-20.04"
-    needs: [bats, lint-charms]
+    runs-on: "ubuntu-20.04"    
     steps:
       - uses: actions/checkout@v2
         with:
