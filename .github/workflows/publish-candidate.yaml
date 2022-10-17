@@ -17,5 +17,5 @@ jobs:
         with:
           fetch-depth: 0
       - name: "Run PublishCharmsToCandidate"
-        run: |
+        run: |         
           echo "Run Publish Charms To Candidate"
