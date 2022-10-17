@@ -4,16 +4,14 @@ on:
   push:
     tags:
       - "*"
-  workflow_run:
-    workflows: ["Integration Tests"]
-    branches: [master]
-    types: 
-      - completed
 
 jobs:
+  run-tests:
+    uses: ./.github/workflows/run-tests.yml
   build-charms:
     name: "Build the charms"
-    runs-on: "ubuntu-20.04"    
+    runs-on: "ubuntu-20.04"
+    needs: [run-tests]  # require tests to pass before deploy runs   
     steps:
       - uses: actions/checkout@v2
         with:
