@@ -10,13 +10,11 @@ permissions:
   contents: read
 
 jobs:
-  #run-linter:
-  #  uses: ./.github/workflows/lint.yaml
+  
   bats:    
     name: bats-${{ matrix.os }}
     runs-on: ubuntu-20.04
-    #needs: [run-linter]
-
+    
     strategy:
       fail-fast: false
       matrix:        
@@ -24,8 +22,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: System
+      run: |        
+        cat /etc/os-release
+        python3 --version
         
-    - name: "Configure LXD"
+    - name: Configure LXD
       run: |        
         sudo adduser $USER lxd
         newgrp lxd        
