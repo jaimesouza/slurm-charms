@@ -14,7 +14,7 @@ jobs:
     uses: ./.github/workflows/lint.yaml
   bats:    
     name: bats-${{ matrix.os }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: [run-linter]
 
     strategy:
