@@ -15,7 +15,7 @@ jobs:
   bats:    
     name: bats-${{ matrix.os }}
     runs-on: ubuntu-20.04
-    needs: [run-linter]
+    #needs: [run-linter]
 
     strategy:
       fail-fast: false
